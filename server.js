@@ -1,10 +1,22 @@
 const express = require('express');
 const app = express();
+require('dotenv').config();
+const port = process.env.PORT || 5000;
+const connect = require('./config/db');
+
+connect();
+
+const postRouter = require('./routes/posts');
+
+app.use(express.json());
+app.use(express.urlencoded({ extended: false }));
 
 app.get('/', (req, res) => {
   res.send('this the home page');
 });
 
-app.listen(5000, () => {
-  console.log('Listening on port 5000');
+app.use('/api/posts', postRouter);
+
+app.listen(port, () => {
+  console.log(`Listening on port ${port}`);
 });
