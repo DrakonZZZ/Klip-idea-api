@@ -5,8 +5,8 @@ body {
     font-size: 16px;
     font-weight: 400;
     line-height: 1.5;
-    color: #333;
-    background-color: #f4f4f4;
+    color: #e1e1e1;
+    background-color: #232323;
     overflow-x: hidden;
 }
 
@@ -17,14 +17,15 @@ header {
     position: relative;
 }
 
+
 #modal-btn {
     border: none;
     background: none;
-    color: green;
+    color: rgb(232, 232, 232);
     cursor: pointer;
     position: absolute;
     top: 10px;
-    left: 10px;
+    right: 10px;
 }
 
 .modal {
@@ -42,13 +43,19 @@ header {
 .modal-box {
     margin: 10% auto;
     width: 600px;
-    background-color: rgb(129, 129, 129);
+    background-color: rgb(43, 43, 43);
     color: #fff;
     padding: 20px;
     border-radius: 10px;
     box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
     animation-name: modalopen;
     animation-duration: var(--modal-duration);
+}
+
+.modal-box input,
+textarea {
+    outline-color: transparent;
+    background-color: #232323;
 }
 
 @keyframes modalopen {
@@ -104,13 +111,13 @@ form label {
 }
 
 .ideas {
-    /* display: grid; */
+    display: grid;
     grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
 }
 
 .ideas .card {
     position: relative;
-    background-color: #fff;
+    background-color: #2e2e2e;
     margin: 10px;
     padding: 20px 15px;
     border-radius: 10px;
@@ -157,13 +164,17 @@ form label {
     right: 10px;
     font-size: 20px;
     cursor: pointer;
-    color: red;
-    background: none;
+    color: #878787;
+    background: rgb(61, 61, 61);
+    border-radius: 50%;
     border: none;
+    padding: 0.2rem 0.6rem;
 }
 
 .delete:hover {
-    color: #000;
+    transition: all .2s ease-in-out;
+    color: rgb(227, 227, 227);
+    background: rgb(31, 31, 31);
 }
 
 .date {
