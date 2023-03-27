@@ -1,13 +1,20 @@
 const express = require('express');
 const router = express.Router();
+const post = require('../modsls/post.js');
 
-router.get('/', (req, res) => {
-  res.json({
-    success: true,
-    data: {
-      posts,
-    },
-  });
+router.get('/', async (req, res) => {
+  try {
+    const clips = await post.find();
+    res.json({
+      success: true,
+      data: {
+        clips,
+      },
+    });
+  } catch (error) {
+    res.status(500);
+    res.json({ success: false, message: "we couldn't find the page" });
+  }
 });
 
 router.get('/:id', (req, res) => {
