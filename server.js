@@ -3,10 +3,9 @@ const app = express();
 require('dotenv').config();
 const port = process.env.PORT || 5000;
 const connect = require('./config/database');
+const postRouter = require('./routes/posts');
 
 connect();
-
-const postRouter = require('./routes/posts');
 
 app.use(express.json());
 app.use(express.urlencoded({ extended: false }));
