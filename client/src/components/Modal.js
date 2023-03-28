@@ -18,8 +18,9 @@ class Modal {
   }
 
   #addEventListners() {
-    this._btnPlus.addEventListener('click', this.#collapseOn.bind(this));
-    window.addEventListener('click', this.#outerClick.bind(this));
+    this._btnPlus.addEventListener('click', () => this.#collapseOn());
+    window.addEventListener('click', (e) => this.#outerClick(e));
+    window.addEventListener('collapseOff', () => this.#collapseOff());
   }
 }
 

@@ -37,7 +37,7 @@ header {
     height: 100%;
     width: 100%;
     overflow: auto;
-    background-color: rgba(0, 0, 0, 0.5);
+    background-color: rgba(0, 0, 0, 0.6);
 }
 
 .modal-box {
@@ -47,15 +47,26 @@ header {
     color: #fff;
     padding: 20px;
     border-radius: 10px;
-    box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.8);
     animation-name: modalopen;
-    animation-duration: var(--modal-duration);
+    animation-duration: 0.2s;
 }
 
 .modal-box input,
 textarea {
-    outline-color: transparent;
+    border: none;
     background-color: #232323;
+    color: #fff;
+}
+
+.modal textarea {
+    border: none;
+}
+
+.modal-box input:focus,
+textarea:focus {
+    border: 1px solid rgba(242, 242, 242, 0.8);
+    outline: none;
 }
 
 @keyframes modalopen {
