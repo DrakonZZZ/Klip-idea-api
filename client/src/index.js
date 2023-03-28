@@ -5,8 +5,9 @@ import './components/Modal';
 import './components/PostForm';
 import Modal from './components/Modal';
 import PostForm from './components/PostForm';
+import PostList from './components/PostList';
 
-const modal = new Modal();
+new Modal();
+new PostList();
 const postForm = new PostForm();
-
 postForm.render();

@@ -121,12 +121,12 @@ form label {
     padding: 0 15px;
 }
 
-.ideas {
+.posts {
     display: grid;
-    grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+    grid-template-columns: repeat(auto-fit, minmax(400px, 1fr));
 }
 
-.ideas .card {
+.posts .card {
     position: relative;
     background-color: #2e2e2e;
     margin: 10px;
@@ -137,7 +137,7 @@ form label {
 
 .tag {
     display: inline-block;
-    background-color: #333;
+    background-color: #202020;
     color: #fff;
     padding: 5px 10px;
     border-radius: 5px;
@@ -147,6 +147,11 @@ form label {
 
 .tag-technology {
     background: steelblue;
+}
+
+.tag-unlisted {
+    background: white;
+    color: ;
 }
 
 .tag-software {
