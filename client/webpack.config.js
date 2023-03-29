@@ -6,12 +6,12 @@ module.exports = {
   mode: 'production',
   entry: './src/index.js',
   output: {
-    path: path.resolve(__dirname, '../server/public'),
+    path: path.resolve(__dirname, '../public'),
     filename: 'bundle.js',
   },
   devServer: {
     static: {
-      directory: path.resolve(__dirname, '../server/public'),
+      directory: path.resolve(__dirname, '../public'),
     },
     port: 3000,
     open: true,
