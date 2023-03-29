@@ -11,7 +11,7 @@ class PostList {
     this._allTags.add('software');
     this._allTags.add('business');
     this._allTags.add('education');
-    this._allTags.add('inventions');
+    this._allTags.add('science');
     this._allTags.add('health');
     this.#eventHandler();
   }
@@ -73,8 +73,8 @@ class PostList {
             ${post.text}
         </p>
         <span class="tag ${tagName}">${post.tag.toUpperCase()}</span>
-        <p>
-            Posted on <span class="date">${post.date}</span> by
+        <p class="user-data">
+            Posted on <span class="date">${post.date.slice(0, 10)}</span> by
             <span class="author">${post.username}</span>
         </p>
     </div>`;
