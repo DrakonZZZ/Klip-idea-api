@@ -10,12 +10,24 @@ class PostForm {
 
   async #submitHandler(e) {
     e.preventDefault();
+    if (
+      !this._form.elements.title.value ||
+      !this._form.elements.username.value ||
+      !this._form.elements.text.value ||
+      !this._form.elements.tag.value
+    ) {
+      alert('Please fill all fields');
+      return;
+    }
+
     const post = {
       title: this._form.elements.title.value,
       username: this._form.elements.username.value,
       text: this._form.elements.text.value,
       tag: this._form.elements.tag.value,
     };
+
+    localStorage.setItem('username', post.username);
 
     const newPost = await this._postRetrieval.createPost(post);
 
@@ -26,6 +38,7 @@ class PostForm {
     this._form.elements.username.value = '';
     this._form.elements.tag.value = '';
     window.dispatchEvent(new Event('collapseOff'));
+    this.render();
   }
 
   render() {
@@ -41,11 +54,13 @@ class PostForm {
     </div>
     <div class="form-control">
         <label for="tag">Tag</label>
-        <input type="text" name="tag" id="tag" />
+        <input type="text" name="tag" id="tag" >
     </div>
     <div class="form-control">
     <label for="post-name">Enter a Username</label>
-    <input type="text" name="username" id="username" />
+    <input type="text" name="username" id="username" value=${
+      localStorage.getItem('username') ? localStorage.getItem('username') : ''
+    }>
     </div>
     <button class="btn" type="submit" id="submit">Submit</button>
 </form>`;

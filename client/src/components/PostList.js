@@ -30,6 +30,10 @@ class PostList {
     this.render();
   }
 
+  delPost(e) {
+    console.log(e.target.value);
+  }
+
   #tagClass(tag) {
     tag = tag.toLowerCase();
     let tagName = '';
