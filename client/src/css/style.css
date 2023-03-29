@@ -122,10 +122,7 @@ form label {
     padding: 0 15px;
 }
 
-.posts {
-    display: grid;
-    grid-template-columns: repeat(auto-fit, minmax(400px, 1fr));
-}
+.posts {}
 
 .posts .card {
     position: relative;

@@ -61,9 +61,13 @@ class PostList {
     this._postListEl.innerHTML = this._posts
       .map((post) => {
         const tagName = this.#tagClass(post.tag);
+        const deleteBtn =
+          localStorage.getItem('username') === post.username
+            ? '<button class="delete"><i class="fas fa-times"></i></button>'
+            : '';
         return `
     <div class="card" data-id="${post._id}">
-        <button class="delete"><i class="fas fa-times"></i></button>
+        ${deleteBtn}
         <h3>${post.title}</h3>
         <p>
             ${post.text}
