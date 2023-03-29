@@ -13,6 +13,7 @@ class PostList {
     this._allTags.add('education');
     this._allTags.add('inventions');
     this._allTags.add('health');
+    this.#eventHandler();
   }
 
   async #getPosts() {
@@ -30,8 +31,19 @@ class PostList {
     this.render();
   }
 
-  delPost(e) {
-    console.log(e.target.value);
+  async delPost(e) {
+    e.stopImmediatePropagation();
+    if (e.target.classList.contains('fa-times')) {
+      const elID = e.target.parentElement.parentElement.dataset.id;
+      try {
+        const res = await postsRetrieval.deletePost(elID);
+        console.log(res);
+        this._posts.filter((post) => post._id != elID);
+        this.#getPosts();
+      } catch (error) {
+        alert("you can't delete this post");
+      }
+    }
   }
 
   #tagClass(tag) {
@@ -50,7 +62,7 @@ class PostList {
       .map((post) => {
         const tagName = this.#tagClass(post.tag);
         return `
-    <div class="card">
+    <div class="card" data-id="${post._id}">
         <button class="delete"><i class="fas fa-times"></i></button>
         <h3>${post.title}</h3>
         <p>
@@ -64,6 +76,12 @@ class PostList {
     </div>`;
       })
       .join('');
+
+    this.#eventHandler();
+  }
+
+  #eventHandler() {
+    this._postListEl.addEventListener('click', (e) => this.delPost(e));
   }
 }
 

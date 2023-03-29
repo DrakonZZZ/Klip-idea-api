@@ -13,8 +13,19 @@ class PostRetrieval {
     return axios.post(this._url, data);
   }
 
+  updatePost(id, data) {
+    return axios.patch(`${this._url}/${id}`, data);
+  }
+
   deletePost(id) {
-    return axios.delete(this._url / `${id}`);
+    const username = localStorage.getItem('username')
+      ? localStorage.getItem('username')
+      : '';
+    return axios.delete(`${this._url}/${id}`, {
+      data: {
+        username: username,
+      },
+    });
   }
 }
 

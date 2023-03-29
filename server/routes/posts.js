@@ -51,39 +51,51 @@ router.post('/', async (req, res) => {
 
 router.patch('/:id', async (req, res) => {
   try {
-    const updatePost = await Post.findByIdAndUpdate(
-      req.params.id,
-      {
-        $set: {
-          title: req.body.title,
-          body: req.body.body,
-          tag: req.body.tag,
+    const post = await Post.findById(req.params.id);
+    if (post.username === req.body.username) {
+      const updatePost = await Post.findByIdAndUpdate(
+        req.params.id,
+        {
+          $set: {
+            title: req.body.title,
+            body: req.body.body,
+            tag: req.body.tag,
+          },
         },
-      },
-      { new: true }
-    );
+        { new: true }
+      );
 
-    res.json({
-      sucessful: true,
-      data: updatePost,
-    });
+      res.json({
+        sucessful: true,
+        data: updatePost,
+      });
+    } else {
+      res.status(403).json({
+        sucessful: false,
+        error: 'You are not authorized to update this post',
+      });
+    }
   } catch (error) {
-    res.status(500);
-    res.json({ success: false, error: 'Resource not found' });
+    res.status(403).json({ success: false, error: 'Resource not found' });
     console.log(error);
   }
 });
 
 router.delete('/:id', async (req, res) => {
   try {
-    const deletePost = await Post.findByIdAndDelete(req.params.id);
-    res.json({
-      sucessful: true,
-      message: 'Post deleted',
-    });
+    const post = await Post.findById(req.params.id);
+    if (post.username === req.body.username) {
+      const deletePost = await Post.findByIdAndDelete(req.params.id);
+
+      res.json({
+        sucessful: true,
+        message: 'Post deleted',
+      });
+    } else {
+      res.status(403).json({ success: false, error: 'Unauthorized Acess' });
+    }
   } catch (error) {
-    res.status(500);
-    res.json({ success: false, error: 'Resource not found' });
+    res.status(500).json({ success: false, error: 'Resource not found' });
     console.log(error);
   }
 });

@@ -4,7 +4,8 @@
   "description": "Place to share your notes and ideas",
   "main": "server.js",
   "scripts": {
-    "start": "nodemon server.js"
+    "start": "node server.js",
+    "dev": "nodemon server.js"
   },
   "author": "Drakonz",
   "license": "MIT",
