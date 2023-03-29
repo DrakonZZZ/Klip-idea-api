@@ -1,5 +1,7 @@
-import '@fontsource/poppins';
-import '@fortawesome/fontawesome-free/css/all.css';
+// Not suitable for production use
+// import '@fontsource/poppins';
+// import '@fortawesome/fontawesome-free/css/all.css';
+
 import './css/style.css';
 import './components/Modal';
 import './components/PostForm';

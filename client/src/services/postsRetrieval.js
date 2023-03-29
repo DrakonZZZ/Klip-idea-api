@@ -2,7 +2,7 @@ import axios from 'axios';
 
 class PostRetrieval {
   constructor() {
-    this._url = 'http://localhost:8000/static/api/posts';
+    this._url = '/api/posts';
   }
 
   getPosts() {

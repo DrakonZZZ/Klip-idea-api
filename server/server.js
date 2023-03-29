@@ -25,7 +25,7 @@ app.get('/', (req, res) => {
   res.json('this the home page');
 });
 
-app.use('/static/api/posts', postRouter);
+app.use('/api/posts', postRouter);
 
 app.listen(port, () => {
   console.log(`Listening on port ${port}`);
